@@ -61,8 +61,8 @@ jobs:
           pattoken: ${{ secrets.pattoken }}
           artifactName: ${{ secrets.artifactName }}
           orgName: ${{ secrets.orgName }}
-          feedDownloadExternal: ${{ secret.feeddownload }}
-          externalFeedCredentials: ${{ secret.externalfeed }}
+          feedDownloadExternal: ${{ secrets.feeddownload }}
+          externalFeedCredentials: ${{ secrets.externalfeed }}
           downloaddirectory: '${{ github.workspace }}'
           #projectId:  ${{ secrets.projectId }}
       
