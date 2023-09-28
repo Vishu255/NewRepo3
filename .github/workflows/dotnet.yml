@@ -9,11 +9,12 @@ on:
   pull_request:
     branches: [ "master" ]
 
+env:
+ artifactsPath: European Shared Assets/WKTAAE-Build-Artifacts
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -26,3 +27,14 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - uses: UniversalPackages@0
+      name: Download application artifacts from WKTAEE repo
+      with: 
+        command: 'download'
+        downloaddirectory: '$(System.DefaultWorkingDirectory)'
+        feedsToUse: 'external'
+        externalFeedCredentials: 'wktaae-workspace-artifacts'
+        feedDownloadExternal: '${{ variables.artifactsPath }}'
+        packageDownloadExternal: '$(packageName)'
+        versionDownloadExternal: '$(packageVersion)'
+      
