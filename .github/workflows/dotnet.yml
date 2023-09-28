@@ -11,8 +11,6 @@ on:
 
 jobs:
   build:
-    env:
-     artifactsPath: European Shared Assets/WKTAAE-Build-Artifacts
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -33,7 +31,7 @@ jobs:
         downloaddirectory: '$(System.DefaultWorkingDirectory)'
         feedsToUse: 'external'
         externalFeedCredentials: 'wktaae-workspace-artifacts'
-        feedDownloadExternal: '${{ variables.artifactsPath }}'
+        feedDownloadExternal: 'European Shared Assets/WKTAAE-Build-Artifacts'
         packageDownloadExternal: '$(packageName)'
         versionDownloadExternal: '$(packageVersion)'
       
