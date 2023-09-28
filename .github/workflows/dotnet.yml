@@ -24,7 +24,23 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - uses: action/UniversalPackages@0 
+    #- name: Upload artifact for deployment job
+    #  uses: actions/upload-artifact@v2
+    #  with:
+    #      name: Download application artifacts from WKTAEE repo 
+    #      feedsToUse: 'external'
+    #      externalFeedCredentials: 'wktaae-workspace-artifacts'
+    #      feedDownloadExternal: 'European Shared Assets/WKTAAE-Build-Artifacts'
+    #      packageDownloadExternal: '$(packageName)'
+    #      versionDownloadExternal: '$(packageVersion)'
+    #      path: '$(System.DefaultWorkingDirectory)'
+    #      retention-days: 1
+          
+    #- name: Download artifact from build job
+    #  uses: actions/download-artifact@v2
+    #  with:
+    #      name: Download application artifacts from WKTAEE repo
+    - uses: actions/download-artifact@v2
       name: Download application artifacts from WKTAEE repo 
       with: 
         run: 'download'
