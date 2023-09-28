@@ -40,14 +40,29 @@ jobs:
     #  uses: actions/download-artifact@v2
     #  with:
     #      name: Download application artifacts from WKTAEE repo
-    - uses: actions/download-artifact@v2
-      name: Download application artifacts from WKTAEE repo 
-      with: 
-        run: 'download'
-        downloaddirectory: '$(System.DefaultWorkingDirectory)'
-        feedsToUse: 'external'
-        externalFeedCredentials: 'wktaae-workspace-artifacts'
-        feedDownloadExternal: 'European Shared Assets/WKTAAE-Build-Artifacts'
-        packageDownloadExternal: '$(packageName)'
-        versionDownloadExternal: '$(packageVersion)'
+#=========================================================================
+    #- uses: actions/download-artifact@v2
+    #  name: Download application artifacts from WKTAEE repo 
+    #  run: |
+    #    command: download
+    #    downloaddirectory: '${{ github.workspace }}'
+    #    feedsToUse: 'external'
+    #    externalFeedCredentials: 'wktaae-workspace-artifacts'
+    #    feedDownloadExternal: 'European Shared Assets/WKTAAE-Build-Artifacts'
+    #    packageDownloadExternal: '$(packageName)'
+    #    versionDownloadExternal: '$(packageVersion)'
+      # checkout
+    - uses: actions/checkout@v1
+      # download artifact from azure dev ops
+    - name: download artifacts from azure dev ops build pipeline
+      uses: manishsat/ado-download-artifact@v1
+      with:
+          #buildDefinitionId: ${{ secrets.buildDefinitionId }}
+          pattoken: ${{ secrets.pattoken }}
+          artifactName: ${{ secrets.artifactName }}
+          orgName: ${{ secrets.orgName }}
+          feedDownloadExternal: ${{ secret.feeddownload }}
+          externalFeedCredentials: ${{ secret.externalfeed }}
+          downloaddirectory: '${{ github.workspace }}'
+          #projectId:  ${{ secrets.projectId }}
       
