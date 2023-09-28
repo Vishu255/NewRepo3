@@ -57,9 +57,9 @@ jobs:
     - name: download artifacts from azure dev ops build pipeline
       uses: actions/download-artifact@v2
       with:
-          #buildDefinitionId: ${{ secrets.buildDefinitionId }}
           pattoken: ${{ secrets.pattoken }}
           artifactName: ${{ secrets.artifactName }}
           orgName: ${{ secrets.orgName }}
           #projectId:  ${{ secrets.projectId }}
+          #buildDefinitionId: ${{ secrets.buildDefinitionId }}
       
