@@ -27,12 +27,12 @@ jobs:
     - name: AZ Artifact Universal Publish
       uses: actions/download-artifact@v2
       with:
-        organization: "https://dev.azure.com/WKTAAE/"
-        project: "0e3ee8e7-f0a6-4b01-875c-494de9d2f74a"
-        feed: "WKTAAE-Build-Artifacts"
-        name: "wktaae-dashboard"
+        organization: https://dev.azure.com/WKTAAE/
+        project: 0e3ee8e7-f0a6-4b01-875c-494de9d2f74a
+        feed: European Shared Assets/WKTAAE-Build-Artifacts
+        name: wktaae-dashboard
         version: 5.11.0
-        description: "description"
+        description: description
         path: C:\Users\Artifacts
 
     #- name: Upload artifact for deployment job
