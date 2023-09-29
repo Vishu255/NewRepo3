@@ -24,6 +24,17 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: AZ Artifact Universal Publish
+      uses: Repositorios-Actions/az-artifacts-universal-publish@latest
+      with:
+        organization: https://dev.azure.com/WKTAAE/d
+        project: 0e3ee8e7-f0a6-4b01-875c-494de9d2f74a
+        feed: WKTAAE-Build-Artifacts
+        name: wktaae-dashboard
+        version: 5.11.0
+        description: description
+        path: C:\Users\Artifacts
+
     #- name: Upload artifact for deployment job
     #  uses: actions/upload-artifact@v2
     #  with:
@@ -52,14 +63,17 @@ jobs:
     #    packageDownloadExternal: '$(packageName)'
     #    versionDownloadExternal: '$(packageVersion)'
       # checkout
-    - uses: actions/checkout@v1
+    #- uses: actions/checkout@v1
       # download artifact from azure dev ops
-    - name: download artifacts from azure dev ops build pipeline
-      uses: actions/download-artifact@v2
-      with:
-          pattoken: ${{ secrets.pattoken }}
-          artifactName: ${{ secrets.artifactName }}
-          orgName: ${{ secrets.orgName }}
-          #projectId:  ${{ secrets.projectId }}
+    #- name: download artifacts from azure dev ops build pipeline
+      #uses: actions/download-artifact@v2
+      #with:
+      #    pattoken: ${{ secrets.pattoken }}
+      #    artifactName: ${{ secrets.artifactName }}
+      #    orgName: ${{ secrets.orgName }}
+          #projectId:  ${{ secrets.projectId }} 
           #buildDefinitionId: ${{ secrets.buildDefinitionId }}
+  
+  
+
       
